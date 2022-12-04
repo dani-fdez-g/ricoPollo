@@ -93,11 +93,7 @@ text-align: center;
       margin-top:-50px;
 
     }
-    .carousel-item{
-      height:45%;
-      width:100%;
-      
-    }
+   
     .iconos-phone{
       text-align: center;
       
@@ -134,6 +130,7 @@ text-align: center;
     padding:10px;
     padding-left: 30px;
     padding-right: 30px;
+    margin-left: 20%;
     text-align: center;
     text-decoration: none;
     font-size: 25px;
@@ -155,8 +152,6 @@ color:white;
 .container-producto{
  width:100%;
  float:left;
-
-
 }
 .menus{
     width:100%;
@@ -232,7 +227,8 @@ text-shadow: 2px 2px #ffc300;
   background-color: #ff5733;
 }
 .card{
-  float:right;
+  float:left;
+  margin:0.9%;
   border-radius:0 !important;
   
 }
@@ -248,7 +244,8 @@ text-decoration: none;
 font-family:'Dinner';
 text-align: center;
 font-size: 23px;
-color:black;
+color: white; 
+-webkit-text-stroke: 1px black;
 width:50%;
 border-style: solid;
 border-color: black;
@@ -257,7 +254,8 @@ margin-right :25%;
 }
 .btn-add:hover{
 background-color: #ff5733;
-color:white;
+color: white; 
+-webkit-text-stroke: 1px black;
 
 
 }
@@ -353,20 +351,75 @@ border-color: black;
     color:white;
   }
 .txt-precioTotal{
-  font-size:30px;
+  font-size:40px;
 }
 .txt-precio{
-  text-shadow:2px 2px #ffc300;
-  font-size:30px;
+  color: #ffc300; 
+  -webkit-text-stroke: 1px black;
+  font-size:40px;
   
 
 }
-.btn-comprar-ya{
-  width:20%;
-  height: 13%;
-  background-color: #ffc300;
+.btn-seguir-pedido{
+  
   border-style: solid;
-  border-color:black;
-  border-radius:15px;
-  padding:0.4%;
+  padding:10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 30px;
+  font-family: 'Dinner';
+  -webkit-text-stroke: 2px #ff5733;
+  color: transparent; 
+  background-color: white;
+  border-color:#ff5733;
+  float:right;  
+  margin:20px;
+
 }
+.btn-seguir-pedido:hover{
+  -webkit-text-stroke: 2px #ff5733;
+  color: transparent; 
+  background-color: white;
+  border-color:#ff5733;
+}
+
+.btn-comprar-ya{
+  color: white; 
+  background-color: #ff5733;
+  border:solid black;
+  padding:10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 30px;
+  font-family: 'Dinner';
+  float:right;
+  margin:20px;
+
+ 
+}
+.btn-comprar-ya:hover{
+  color: #ffc300; 
+  -webkit-text-stroke: 1px black;
+
+}
+.box-btn-compra{
+margin:20px;
+
+}
+.cookie{
+font-family: 'Dinner';
+background-color: #ff5733;
+border:solid #ffc300;
+text-align: center;
+color:black;
+padding-top:10px;
+width:auto;
+font-size: 30px;
+margin:10px;
+}
+
+
+
+
+
+
