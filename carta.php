@@ -49,7 +49,7 @@
         else{
             $_SESSION['sel'] = array();
         }
-
+        
         ?>
     </header>
     <body>
@@ -65,32 +65,30 @@
         
         </section>
 
-        <section class="container " id="hamburguesas" > <!--hamburguesas-->
-        <h3 class="titulos" >Hamburguesas</h3>
-        <div class="col-6 col-md-12">
-
-                    <?php foreach ($hamburguesas as $key => $producto){ ?>
-                    <div class="card">
-                        <div class="card-name-product">
-                            <p class="nombre-producto"><?php echo $producto->getNombre();?></p>
-                        </div>
-                        <div style="width:230px; height: 226px; background-image: URL(<?php echo $producto->getImagen();?>)" class="card-image-product">
-                            <div class="des-producto">
-                            <h3 class="titulo">INGREDIENTES</h3>
-                            <p class="descripcion"><?php echo $producto ->getDescripcion();?></p>
-                            </div>
-                        </div>
-                        <div class="card-body-producto">
-                            <p class="precio"><?php echo $producto->getPrecio();?>$</p>
-                            <form action="carta.php" method='post'>
-                                <input type="hidden" name="producto-hamburguesa" value="<?php echo $key?>">
-                                <button class="btn-add" type="submit">AÑADIR</button>
-                            </form>
+        <section class="container-producto" id="hamburguesas" > <!--hamburguesas-->
+           <h3 class="titulos ">hamburguesas</h3>
+                <?php foreach ($hamburguesas as $key => $producto){ ?>
+                <div class="card">
+                    <div class="card-name-product">
+                        <p class="nombre-producto"><?php echo $producto->getNombre();?></p>
+                    </div>
+                    <div style="width:230px; height: 226px; background-image: URL(<?php echo $producto->getImagen();?>)" class="card-image-product">
+                        <div class="des-producto">
+                           <h3 class="titulo">INGREDIENTES</h3>
+                           <p class="descripcion"><?php echo $producto ->getDescripcion();?></p>
                         </div>
                     </div>
-                <?php }?>
-            </div>
-        </section> <!-- fin hamburguesas-->
+                    <div class="card-body-producto">
+                        <p class="precio"><?php echo $producto->getPrecio();?>$</p>
+                        <form action="carta.php" method='post'>
+
+                                <input type="hidden" name="producto-hamburguesa" value="<?php echo $key;?>">
+                                <button class="btn-add" type="submit">AÑADIR</button>
+                        </form>
+                    </div>
+                </div>
+            <?php }?>
+            </section> <!--fin hamburguesas-->
            <section class="container-producto" id="ensaladas" > <!--ensaladas-->
            <h3 class="titulos ">ENSALADAS</h3>
                 <?php foreach ($ensaladas as $key => $producto){ ?>

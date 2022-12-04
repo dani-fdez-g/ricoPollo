@@ -20,8 +20,7 @@
      require_once 'assets/includes/cabecera.php';
  
    
-     //creo la cookie
-    //  setcookie("ultimoPrecio", $precioFinal, time()+10000);
+     
 
        //botones para añadir y eliminar cantidades
        if(isset($_POST['del'])){
@@ -37,13 +36,14 @@
         $pedidoSel = $_SESSION['sel'][$_POST['pos']];
         $pedidoSel -> setCantidad($pedidoSel->getCantidad() + 1);
     }
+    //creo la cookie
+    $precioFinal = calculadoraPrecios::calcularPrecioTotal($_SESSION['sel']);
+    setcookie("ultimoPrecio", $precioFinal, time()+10000);
     ?>
     
     </header>
     
-    <section class="carrito">
-        <div class="container">
-           <div>
+        <div class="container box-compra">
             <table>
                 <!-- encabezado -->
                 <tr>
@@ -53,61 +53,48 @@
                 </tr>
                 <!-- contenido -->
                 <?php
-                $pos=0;
-                foreach($_SESSION['sel'] as $pedido){
-                    ?>
-                <tr class="border-box-producto">
-                   
-                    <td class="box-producto"><img class="img-carrito me-3" src="<?= $pedido->getProducto()->getImagen();?>"><?= $pedido->getProducto()->getNombre();?></td>
-                    <form action="compra.php" method="post">
-                            <input type="hidden" name="pos" value=<?=$pos?>>
-                            <td><button class="ms-2 btn-cantidad me-2" type="submit" name="add"> + </button>
-                            <?= $pedido->getCantidad();?>
-                            <button class="btn-cantidad ms-2 " type="submit" name="del"> - </button></td>
-
-                    </form>
-                    <td class="txt-center"><?=$pedido->getProducto()->getPrecio();?> $</td>
-                    <td>
-                        
-                    </td>
-                </tr>
-                <?php $pos++;
-                }
-               
-               ?>
-                <tr>
+                    $pos=0;
+                    foreach($_SESSION['sel'] as $pedido){
+                        ?>
+                    <tr class="border-box-producto">
                     
-                    <td></td>                    
-                    <td class="txt-center txt-precio">PRECIO FINAL</td>
-                    <td class="txt-center txt-precioTotal"><?=calculadoraPrecios::calcularPrecioTotal($_SESSION['sel']);  ?> $</td>
+                        <td class="box-producto"><img class="img-carrito me-3" src="<?= $pedido->getProducto()->getImagen();?>"><?= $pedido->getProducto()->getNombre();?></td>
+                        <form action="compra.php" method="post">
+                                <input type="hidden" name="pos" value=<?=$pos?>>
+                                <td><button class="ms-2 btn-cantidad me-2" type="submit" name="add"> + </button>
+                                <?= $pedido->getCantidad();?>
+                                <button class="btn-cantidad ms-2 " type="submit" name="del"> - </button></td>
+
+                        </form>
+                        <td class="txt-center"><?=$pedido->getProducto()->getPrecio();?> $</td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                    <?php $pos++;
+                    }
+                
+                ?>
+                    <tr>
+                    
+                        <td></td>                    
+                        <td class="txt-center txt-precio">TOTAL</td>
+                        <td class="txt-center txt-precioTotal"><?=$precioFinal  ?> $</td>
              
-                </tr>
-                <div class="btn-comprar">
-                    <form action="#!" method="post">
-                            <input type="hidden" name="pos" value=<?=$pos?>>
-                            <td><a class="ms-2 btn-seguir-pedido me-2" type="submit" name="pedir-mas"> PEDIR MAS</a>
-                            <a class="btn-comprar-ya ms-2 " type="submit" name="comprar"> COMPRAR </a></td>
-
-                    </form>
-                </div>
-                <div class="cookies">
-                    
-                </div>
-                    
-
-                    
-          
+                    </tr>
             </table>
-           </div>
-         
+                        <div class="cookie">
+                            <p>Tu ultimo pedido => <?= $_COOKIE['ultimoPrecio']?> $</p> 
+                        </div>
+                        <a href="compra.php"><button type="submit"class="btn-comprar-ya me-5 ms-5 " > COMPRAR </button></a>
+                        <a href="carta.php"><button type="submit" class="btn-seguir-pedido ">  PEDIR MAS </button>      </a>
      
         </div>
-    </section>
 
     
-    <footer>
+
     <?php require_once 'assets/includes/footer.php';?>
-    </footer>
+
 </body>
 
 <script src="assets/js/bootstrap.bundle.min.js"></script>
